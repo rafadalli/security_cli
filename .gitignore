@@ -1,2 +1,8 @@
+# Python
 __pycache__/
 *.pyc
+
+# Ruff
+.ruff_cache
+
+.DS_Store
