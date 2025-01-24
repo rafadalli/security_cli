@@ -1,17 +1,27 @@
 #!/bin/bash
 
 readonly usage='
-README
+### **Password Generator**
+    Generate a secure password:
+        ./sec-cli pass_gen
+        # or
+        ./sec-cli -p
+
+### **Port Scanner**
+    Scan ports for a given target:
+        ./sec-cli scan
+        # or
+        ./sec-cli -s
 '
 
 function main() {
     local l_action="$1"
     case "$l_action" in
         "pass_gen" | "-p")
-            python3 main.py --pass_gen
+            python3 src/main.py --pass_gen
             ;;
         "scan" | "-s")
-            python3 main.py --scanner
+            python3 src/main.py --scanner
             ;;
         *)
             echo -e "Error: action does not exist\n$usage"
