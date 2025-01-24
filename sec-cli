@@ -1,0 +1,52 @@
+#!/bin/bash
+
+readonly usage='
+README
+'
+
+function main() {
+    local l_action="$1"
+    case "$l_action" in
+        "pass_gen" | "-p")
+            python3 main.py --pass_gen
+            ;;
+        "scan" | "-s")
+            python3 main.py --scanner
+            ;;
+        *)
+            echo -e "Error: action does not exist\n$usage"
+            exit 1
+            ;;
+    esac
+}
+
+# Establish the env based on the git branch
+branch="$(git branch --show-current 2>/dev/null)"
+if grep -qi -e "master" <<< "$branch"; then
+    export ENV="PRD"
+else
+    export ENV="HML"
+fi
+
+if [[ "$1" == "--debug" ]]; then
+    export ENV="HML"
+    shift 1
+fi
+
+# Display ASCII art
+if command -v figlet >/dev/null 2>&1; then
+    figlet "Security CLI"
+    echo ""
+else
+    echo "Security CLI"
+    echo "Note: Install 'figlet' for better ASCII art (e.g., 'sudo apt install figlet')."
+fi
+
+# Calls main function with arguments
+if [[ "$1" == "pass_gen" || "$1" == "-p" || "$1" == "scan" || "$1" == "-s" ]]; then
+    main "$@"
+else
+    echo -e "$usage"
+    exit 1
+fi
+

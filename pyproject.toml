@@ -1,0 +1,47 @@
+[tool.ruff]
+line-length = 250
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+docstring-code-line-length = "dynamic"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+[tool.ruff.lint]
+select = [
+    "A",    # flake8-builtins
+    "ANN",  # flake8-annotations
+    "B",    # flake8-bugbear
+    "COM",  # flake8-commas
+    "N",    # pep8-naming
+    "D",    # pydocstyle
+    "E",    # pydocstyle Error
+    "F",    # pyflakes
+    "I",    # isort
+    "PLC",  # Pylint Convention
+    "PLE",  # Pylint Error
+    "PLR",  # Pylint Refractor
+    "PLW",  # Pylint Warning
+    "SIM",  # flake8-simplify
+    "UP",   # pyupgrade
+    "W",    # pydocstyle Warning
+]
+
+ignore = [
+    "ANN101",   # missing-type-self
+    "COM812",   # missing-trailing-comma
+    "D100",     # undocumented-public-module
+    "D104",     # undocumented-public-package
+    "D203",     # one-blank-line-before-class
+    "D213",     # multi-line-summary-second-line
+    "D406",     # new-line-after-section-name
+    "D407",     # dashed-underline-after-section
+    "D413",     # blank-line-after-last-section
+    "PLR2004",  # magic-value-comparison
+    "PLR1722",  # sys-exit-alias
+    "D101",     # undocumented-public-class
+    "D400",     # ends-in-period
+    "D415",     # missing-terminal-punctuation
+    "D401",     # non-imperative-mood
+]
